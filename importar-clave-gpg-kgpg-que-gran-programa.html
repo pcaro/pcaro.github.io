@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Pablo Caro" />
+        <meta name="copyright" content="Pablo Caro" />
+
+        <meta name="description" content="gpg --keyserver pgp.rediris.es --search-keys erevilla@yaco.es gpg: buscando «erevilla@yaco.es» de hkp servidor pgp.rediris.es (1) Ernesto Revilla Derksen (Yaco) 1024 bit DSA key 3E455F5A, creado: 2009-09-16 Keys 1-1 of 1 for &#34;erevilla@yaco.es&#34;. Introduzca número(s), O)tro, o F)in &gt; 1 gpg ...
+" />
+        <meta name="twitter:creator" content="@pcaro">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="linux, Sistemas, " />
+
+<meta property="og:title" content="Importar clave gpg. kgpg que gran programa "/>
+<meta property="og:url" content="/importar-clave-gpg-kgpg-que-gran-programa" />
+<meta property="og:description" content="gpg --keyserver pgp.rediris.es --search-keys erevilla@yaco.es gpg: buscando «erevilla@yaco.es» de hkp servidor pgp.rediris.es (1) Ernesto Revilla Derksen (Yaco) 1024 bit DSA key 3E455F5A, creado: 2009-09-16 Keys 1-1 of 1 for &#34;erevilla@yaco.es&#34;. Introduzca número(s), O)tro, o F)in &gt; 1 gpg ..." />
+<meta property="og:site_name" content="Anotaciones por Pablo Caro" />
+<meta property="og:article:author" content="Pablo Caro" />
+<meta property="og:article:published_time" content="2012-10-24T02:22:00+02:00" />
+<meta name="twitter:title" content="Importar clave gpg. kgpg que gran programa ">
+<meta name="twitter:description" content="gpg --keyserver pgp.rediris.es --search-keys erevilla@yaco.es gpg: buscando «erevilla@yaco.es» de hkp servidor pgp.rediris.es (1) Ernesto Revilla Derksen (Yaco) 1024 bit DSA key 3E455F5A, creado: 2009-09-16 Keys 1-1 of 1 for &#34;erevilla@yaco.es&#34;. Introduzca número(s), O)tro, o F)in &gt; 1 gpg ...">
+<meta property="og:image" content="/theme/images/apple-touch-icon-152x152.png" />
+<meta name="twitter:image" content="/theme/images/apple-touch-icon-152x152.png" >
+
+        <title>Importar clave gpg. kgpg que gran programa  · Anotaciones por Pablo Caro
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/theme/css/custom.css" media="screen">
+        <link rel="shortcut icon" href="/theme/images/favicon.ico" type="image/x-icon" type="image/png" />
+        <link rel="icon" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name><span style="color:#AA1032;">Anotaciones</span> <span style="color:darkblue;">por</span> <span style="color:black">Pablo Caro</span></span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Inicio</a></li>
+                            <li ><a href="/categories.html">Categorías</a></li>
+                            <li ><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archivos</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Búsqueda" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/importar-clave-gpg-kgpg-que-gran-programa"> Importar clave gpg. kgpg que gran&nbsp;programa  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            
+    <pre lang="bash">
+        gpg --keyserver pgp.rediris.es --search-keys erevilla@yaco.es
+
+gpg: buscando «erevilla@yaco.es» de hkp servidor pgp.rediris.es
+(1) Ernesto Revilla Derksen (Yaco)
+1024 bit DSA key 3E455F5A, creado: 2009-09-16
+Keys 1-1 of 1 for "erevilla@yaco.es". Introduzca número(s), O)tro, o F)in &gt; 1
+gpg: solicitando clave 3E455F5A de hkp servidor pgp.rediris.es
+gpg: clave 3E455F5A: clave pública "Ernesto Revilla Derksen (Yaco) " importada
+gpg: no se encuentran claves totalmente fiables
+gpg: Cantidad total procesada: 1
+gpg: importadas: 1
+
+kmail dice:
+Mensaje firmado por erevilla@yaco.es (ID Clave: 0x4D76FA323E455F5A).
+La firma es válida, pero no se conoce la validez de la clave.
+
+Ver: http://www.gnupg.org/gph/en/manual/x56.html
+Tengo que dar validez con una firma mía
+
+pcaro@davinci$ gpg --edit-key 3E455F5A
+gpg (GnuPG) 1.4.9; Copyright (C) 2008 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+pub 1024D/3E455F5A creado: 2009-09-16 [caduca: 2011-09-16] uso: SC
+confianza: desconocido validez: desconocido
+sub 2048g/1AAA03F0 creado: 2009-09-16 [caduca: 2011-09-16] uso: E
+desconocido (1). Ernesto Revilla Derksen (Yaco)
+
+Orden&gt; trust
+pub 1024D/3E455F5A creado: 2009-09-16 [caduca: 2011-09-16] uso: SC
+confianza: desconocido validez: desconocido
+sub 2048g/1AAA03F0 creado: 2009-09-16 [caduca: 2011-09-16] uso: E
+desconocido (1). Ernesto Revilla Derksen (Yaco)
+
+Por favor, decida su nivel de confianza para que este usuario
+verifique las claves de otros usuarios (mirando pasaportes,
+comprobando huellas dactilares en diferentes fuentes...)
+
+1 = No lo sé o prefiero no decirlo
+2 = NO tengo confianza
+3 = Confío un poco
+4 = Confío totalmente
+5 = confío absolutamente
+m = volver al menú principal
+
+¿Su decisión? 4
+
+pub 1024D/3E455F5A creado: 2009-09-16 [caduca: 2011-09-16] uso: SC
+confianza: total validez: desconocido
+sub 2048g/1AAA03F0 creado: 2009-09-16 [caduca: 2011-09-16] uso: E
+desconocido (1). Ernesto Revilla Derksen (Yaco)
+Por favor, advierta que la validez de clave mostrada no es necesariamente
+correcta a menos de que reinicie el programa.
+
+</pre>
+
+<a href="http://www.fermu.com/content/view/231/2/lang,es/">http://www.fermu.com/content/view/231/2/lang,es/</a>
+
+<a href="http://www.rediris.es/pgp/">http://www.rediris.es/pgp/</a>
+
+<pre lang="bash">
+
+Generando mi propia clave:
+pcaro@davinci$ gpg --gen-key
+gpg (GnuPG) 1.4.9; Copyright (C) 2008 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Por favor seleccione tipo de clave deseado:
+(1) DSA y ElGamal (por defecto)
+(2) DSA (sólo firmar)
+(5) RSA (sólo firmar)
+¿Su selección?: 1
+El par de claves DSA tendrá 1024 bits.
+las claves ELG-E pueden tener entre 1024 y 4096 bits de longitud.
+¿De qué tamaño quiere la clave? (2048)
+El tamaño requerido es de 2048 bits
+Por favor, especifique el período de validez de la clave.
+0 = la clave nunca caduca
+= la clave caduca en n días
+w = la clave caduca en n semanas
+m = la clave caduca en n meses
+y = la clave caduca en n años
+¿Validez de la clave (0)? 3y
+La clave caduca lun 29 oct 2012 12:01:25 CET
+¿Es correcto? (s/n) s
+
+Necesita un identificador de usuario para identificar su clave. El programa
+construye el identificador a partir del Nombre Real, Comentario y Dirección
+de Correo electrónico de esta forma:
+"Heinrich Heine (Der Dichter)"
+
+Nombre y apellidos: Pablo Caro Revuelta
+Dirección de correo electrónico: pcaro@yaco.es
+Comentario:
+Ha seleccionado este ID de usuario:
+Â«Pablo Caro RevueltaÂ»
+
+¿Cambia (N)ombre, (C)omentario, (D)irección o (V)ale/(S)alir? C
+Comentario: pcaro
+Ha seleccionado este ID de usuario:
+Â«Pablo Caro Revuelta (pcaro)Â»
+
+¿Cambia (N)ombre, (C)omentario, (D)irección o (V)ale/(S)alir? V
+Necesita una frase contraseña para proteger su clave secreta.
+
+Es necesario generar muchos bytes aleatorios. Es una buena idea realizar
+alguna otra tarea (trabajar en otra ventana/consola, mover el ratón, usar
+la red y los discos) durante la generación de números primos. Esto da al
+generador de números aleatorios mayor oportunidad de recoger suficiente
+entropía.
+++++++++++.++++++++++++++++++++.++++++++++...+++++++++++++++..++++++++++++++++++++++++++++++..+++++..++++++++++.+++++++++++++++.++++++++++++++++++++......&gt;.+++++.................................+++++
+
+No hay suficientes bytes aleatorios disponibles. Por favor, haga algún
+otro trabajo para que el sistema pueda recolectar más entropía
+(se necesitan 280 bytes más).
+
+Es necesario generar muchos bytes aleatorios. Es una buena idea realizar
+alguna otra tarea (trabajar en otra ventana/consola, mover el ratón, usar
+la red y los discos) durante la generación de números primos. Esto da al
+generador de números aleatorios mayor oportunidad de recoger suficiente
+entropía.
++++++++++++++++.+++++.+++++++++++++++..+++++.+++++..++++++++++++++++++++..++++++++++++++++++++.+++++.++++++++++++++++++++...+++++.++++++++++++++++++++.+++++++++++++++..&gt;..+++++........&gt;+++++.+++++.+++++....................+++++.....................................................+++++............................+++++^^^
+gpg: clave 4A52D5BA marcada como de confianza absoluta
+claves pública y secreta creadas y firmadas.
+
+gpg: comprobando base de datos de confianza
+gpg: 3 dudosa(s) necesarias, 1 completa(s) necesarias,
+modelo de confianza PGP
+gpg: nivel: 0 validez: 1 firmada: 0 confianza: 0-, 0q, 0n, 0m, 0f, 1u
+gpg: siguiente comprobación de base de datos de confianza el: 2012-10-29
+pub 1024D/4A52D5BA 2009-10-30 [[caduca: 2012-10-29]]
+Huella de clave = 483C F267 8A4B 0D27 3451 88A9 FE05 5E01 4A52 D5BA
+uid Pablo Caro Revuelta (pcaro) sub 2048g/7436FA09 2009-10-30 [[caduca: 2012-10-29]]
+
+</pre>
+
+<h2>programas&nbsp;graficos</h2>
+<pre lang="bash">
+sudo aptitude install kleopatra kgpg
+</pre>
+<p>
+Para que puedas enviar los correos firmados en kmail:
+<a href="http://randomguy3.wordpress.com/2008/07/24/kmail-trunk-signing/">http://randomguy3.wordpress.com/2008/07/24/kmail-trunk-signing/</a>
+</p>
+    
+            <section>
+    <p id="post-share-links">
+    ¿Te gustó esta anotación? Compártela en:
+    <a href="http://twitter.com/home?status=Importar%20clave%20gpg.%20kgpg%20que%20gran%C2%A0programa%20 /importar-clave-gpg-kgpg-que-gran-programa" target="_blank" title="Compartir en Twitter">Twitter</a>
+    ❄
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=/importar-clave-gpg-kgpg-que-gran-programa&p[images][0]=&p[title]=Importar%20clave%20gpg.%20kgpg%20que%20gran%C2%A0programa%20&p[summary]=%0D%0A%20%20%20%20%3Cpre%20lang%3D%22bash%22%3E%0D%0A%20%20%20%20%20%20%20%20gpg%20--keyserver%20pgp.rediris.es%20--search-keys%20erevilla%40yaco.es%0D%0A%0D%0Agpg%3A%20buscando%20%C2%ABerevilla%40yaco.es%C2%BB%20de%20hkp%20servidor%20pgp.rediris.es%0D%0A%281%29%20Ernesto%20Revilla%20Derksen%20%28Yaco%29%0D%0A1024%20bit%20DSA%20key%203E455F5A%2C%20creado%3A%202009-09-16%0D%0AKeys%201-1%20of%201%20for%20%22erevilla%40yaco.es%22.%20Introduzca%20n%C3%BAmero%28s%29%2C%20O%29tro%2C%20o%20F%29in%20%26gt%3B%201%0D%0Agpg%20...%3C/pre%3E" target="_blank" title="Compartir en Facebook">Facebook</a>
+    ❄
+    <a href="https://plus.google.com/share?url=/importar-clave-gpg-kgpg-que-gran-programa" target="_blank" title="Compartir en Google Plus">Google+</a>
+    ❄
+    <a href="mailto:?subject=Importar%20clave%20gpg.%20kgpg%20que%20gran%C2%A0programa%20&body=/importar-clave-gpg-kgpg-que-gran-programa" target="_blank" title="Compartir vía correo electrónico">Email</a>
+    </p>
+</section>
+
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Publicado</h4>
+            <time pubdate="pubdate" datetime="2012-10-24T02:22:00+02:00">oct 24, 2012</time>
+            <h4>Categoría</h4>
+            <a class="category-link" href="/categories.html#sistemas-ref">Sistemas</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="/tags.html#linux-ref">linux
+                    <span>25</span>
+</a></li>
+            </ul>
+<h4>Contacta conmigo</h4>
+    <a href="http://twitter.com/pcaro" title="My Twitter Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter sidebar-social-links"></i></a>
+    <a href="http://github.com/pcaro" title="My Github Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="https://www.linkedin.com/in/pcarorevuelta" title="My Linkedin Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-linkedin sidebar-social-links"></i></a>
+    <a href="https://www.facebook.com/pablo.carorevuelta" title="My Facebook Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-facebook sidebar-social-links"></i></a>
+    <a href="mailto:correo@pablocaro.es" title="My Email Address" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-envelope sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name"><span style="color:#AA1032;">Anotaciones</span> <span style="color:darkblue;">por</span> <span style="color:black">Pablo Caro</span></span> - Anotaciones</li>
+        <li class="elegant-license"><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"> Anotaciones</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="http://pablocaro.es" property="cc:attributionName" rel="cc:attributionURL">Pablo Caro</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</li>
+        <li class="elegant-power">Proporcionados por <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> por <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>
