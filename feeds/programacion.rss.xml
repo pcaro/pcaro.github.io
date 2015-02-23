@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/programacion.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 11 Oct 2014 11:02:00 +0200</lastBuildDate><item><title>Función genérica para usar como upload_to</title><link>http://pablocaro.es/funcion-generica-para-usar-como-upload_to</link><description>&lt;p&gt;Los FileField en django necesitan ana función &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.7/ref/models/fields/#django.db.models.FileField.upload_to"&gt;upload_to&lt;/a&gt; que determine donde se subirá el fichero.
+Yo suelo tener en &lt;code class="code"&gt;
+utils.py&lt;/code&gt;
+ una función genérica que los deja en una subcarpeta con el nombre del&amp;nbsp;modelo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;generic_upload_to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Generic `upload_to` function for models.FileField and models.ImageField&lt;/span&gt;
+&lt;span class="sd"&gt;    which uploads files to `&amp;lt;app_label&amp;gt;/&amp;lt;model_name&amp;gt;/&amp;lt;file_name&amp;gt;`.&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_meta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_label&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_meta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;El uso el&amp;nbsp;previsible:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;featured_image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImageField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;upload_to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;generic_upload_to&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                            &lt;span class="n"&gt;verbose_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Imagen Destacada (770x490)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                            &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;250&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Sat, 11 Oct 2014 11:02:00 +0200</pubDate><guid>tag:pablocaro.es,2014-10-11:funcion-generica-para-usar-como-upload_to</guid><category>django</category><category>python</category></item><item><title>Django: enlaces en listado de objectos</title><link>http://pablocaro.es/enlaces-en-listado-de-objectos</link><description>&lt;p&gt;En mis proyectos suelo usar enlaces a elementos relacionados en el change_list del admin.&lt;/p&gt;
+
+&lt;div class="section" id="utils-py"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;utils.py&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Tengo esto en &lt;code class="code"&gt;
+utils.py&lt;/code&gt;
+&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.contenttypes.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ContentType&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;urlresolvers&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils.datastructures&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;SortedDict&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils.functional&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;memoize&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_change_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;""" Utility method&lt;/span&gt;
+&lt;span class="sd"&gt;        def server_link(self, obj):&lt;/span&gt;
+&lt;span class="sd"&gt;             return self.get_change_url(obj.server)&lt;/span&gt;
+&lt;span class="sd"&gt;        server_link.short_description = _('server')&lt;/span&gt;
+&lt;span class="sd"&gt;        server_link.allow_tags = True&lt;/span&gt;
+&lt;span class="sd"&gt;        server_link.admin_order_field = 'server__name'&lt;/span&gt;
+&lt;span class="sd"&gt;    """&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt;
+    &lt;span class="n"&gt;content_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_content_type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__class__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;change_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;urlresolvers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;:&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;_&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;_change"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content_type&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_label&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content_type&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;'&amp;lt;a href="&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;"&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;/a&amp;gt;'&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;change_url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_get_content_type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;klass&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ContentType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_for_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;klass&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;get_content_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;memoize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;_get_content_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SortedDict&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Hago uso de memoize para aumentar la eficiencia. Creo que es el punto junto entre simplicidad
+en el código con facilidad de uso. He tenido también decoradores para repetir menos en el admin.py
+pero cuando otros veían el código no lo entendían a la primera.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="admin-py"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;admin.py&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Un ejemplo de uso: en &lt;code class="code"&gt;
+admin.py&lt;/code&gt;
+ (suponiendo que el modelo Link tiene un &lt;span class="caps"&gt;FK&lt;/span&gt; llamado product):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_change_url&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;LinkAdmin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AdminImageMixin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelAdmin&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;list_display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'is_visible'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'product_link'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'updated_at'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;search_fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;product_link&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;get_change_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;obj&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;product_link&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;short_description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'Product'&lt;/span&gt;
+    &lt;span class="n"&gt;product_link&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;allow_tags&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+    &lt;span class="n"&gt;product_link&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;admin_order_field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'product__name'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Wed, 21 May 2014 10:42:00 +0200</pubDate><guid>tag:pablocaro.es,2014-05-21:enlaces-en-listado-de-objectos</guid><category>django</category><category>python</category></item><item><title>Settings vars processor</title><link>http://pablocaro.es/settings-vars-processor</link><description>&lt;p&gt;Lo suelo usar durante el principio de los&amp;nbsp;proyectos.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;django_settings&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ImproperlyConfigured&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    Adds the settings specified in settings.TEMPLATE_VISIBLE_SETTINGS to&lt;/span&gt;
+&lt;span class="sd"&gt;    the request context.&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;new_settings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;attr&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;django_settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TEMPLATE_VISIBLE_SETTINGS&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;new_settings&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;getattr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;django_settings&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;AttributeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;TEMPLATE_VISIBLE_SETTINGS: &amp;#39;{0}&amp;#39; does not exist&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;ImproperlyConfigured&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new_settings&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se usa&amp;nbsp;así:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;TEMPLATE_CONTEXT_PROCESSORS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;django.contrib.auth.context_processors.auth&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;web.context_processors.settings&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;CLIENT_SLOGAN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Esto es un ejemplo&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;TEMPLATE_VISIBLE_SETTINGS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;DEBUG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;CLIENT_SLOGAN&amp;#39;&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Wed, 08 Jan 2014 11:23:00 +0100</pubDate><guid>tag:pablocaro.es,2014-01-08:settings-vars-processor</guid><category>python</category><category>django</category></item><item><title>Depurando Tomcat</title><link>http://pablocaro.es/depurando-tomcat</link><description>
+        Se usa Java Platform Debuging Architecture &lt;span class="caps"&gt;JPDA&lt;/span&gt;
+
+&lt;a href="https://confluence.sakaiproject.org/display/BOOT/Setting+Up+Tomcat+For+Remote+Debugging"&gt;https://confluence.sakaiproject.org/display/&lt;span class="caps"&gt;BOOT&lt;/span&gt;/Setting+Up+Tomcat+For+Remote+Debugging&lt;/a&gt;
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Wed, 24 Oct 2012 03:13:00 +0200</pubDate><guid>tag:pablocaro.es,2012-10-24:depurando-tomcat</guid><category>java</category></item><item><title>Autorelad en plone</title><link>http://pablocaro.es/autorelad-en-plone</link><description>
+        Otro recordatorio.
+
+Para recargar mientras desarrollo una browserview en plone:
+&lt;pre lang="bash"&gt;$ when-changed.py *.py -c wget -q -O /dev/null  \
+http://admin:admin@localhost:8080/@@reload?action=code&lt;/pre&gt;
+Basta pues con usar &lt;a title="when-changed" href="https://github.com/joh/when-changed"&gt;when-changed&lt;/a&gt; y &lt;a href="http://pypi.python.org/pypi/plone.reload/"&gt;plone.reload&lt;/a&gt;
+
+Se que existen extensiones  para el navegador  que recargan una  pestaña cuando cambia un fichero, pero yo soy más de&amp;nbsp;consola.
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Fri, 27 Jul 2012 04:38:00 +0200</pubDate><guid>tag:pablocaro.es,2012-07-27:autorelad-en-plone</guid><category>zope</category></item><item><title>scp con compresión</title><link>http://pablocaro.es/scp-con-compresion</link><description>
+        La mejor forma de descargar una zodb:
+&lt;pre lang="bash"&gt;scp -C -o CompressionLevel=9 user@yoursite.com:~/plonefolder/zinstance/var/filestorage/Data.fs .&lt;/pre&gt;
+Leído en: &lt;a href="http://blog.mfabrik.com/2011/03/02/scp-file-copy-with-on-line-compression/"&gt;http://blog.mfabrik.com/2011/03/02/scp-file-copy-with-on-line-compression/&lt;/a&gt;
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Fri, 04 Mar 2011 03:49:00 +0100</pubDate><guid>tag:pablocaro.es,2011-03-04:scp-con-compresion</guid><category>linux</category><category>zope</category></item><item><title>Zen Coding y komodo edit</title><link>http://pablocaro.es/zen-coding-y-komodo-edit</link><description>
+        Mi editor favorito &lt;a href="http://www.activestate.com/komodo-edit" target="_blank"&gt;Komodo Edit&lt;/a&gt; tiene un plugin de &lt;a href="http://code.google.com/p/zen-coding/" target="_blank"&gt;Zen Coding &lt;/a&gt;y este funciona muy bien también con plantillas zpt. Por ejemplo:
+
+Así una expresión como la siguente
+&lt;pre lang="css"&gt;
+dl&gt;tal:rep[tal:repeat]&gt;dt+dd
+&lt;/pre&gt;
+Se convierte en el siguiente trozo de html con los nesesarios tabstops:
+&lt;pre lang="css"&gt;
+&lt;dl&gt;
+    &lt;tal:rep tal:repeat=""&gt;
+        &lt;dt&gt;&lt;/dt&gt;
+        &lt;dd&gt;&lt;/dd&gt;
+    &lt;/tal:rep&gt;
+&lt;/dl&gt;&lt;/pre&gt;
+Muy pero que muy&amp;nbsp;cómodo
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Fri, 15 Oct 2010 14:41:00 +0200</pubDate><guid>tag:pablocaro.es,2010-10-15:zen-coding-y-komodo-edit</guid><category>zope</category></item><item><title>Progreso en un reindexado de zope</title><link>http://pablocaro.es/progreso-en-un-reindexado-de-zope</link><description>
+        Visto en el producto contentleadimage:
+&lt;pre lang="python"&gt;from Products.ZCatalog.ProgressHandler import ZLogHandler
+ctool.reindexIndex(['hasContentLeadImage'], portal.REQUEST, pghandler=ZLogHandler())&lt;/pre&gt;
+Esto muestra un progreso en la consola si estás ejecutando  en primer&amp;nbsp;plano.
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Sat, 18 Sep 2010 06:06:00 +0200</pubDate><guid>tag:pablocaro.es,2010-09-18:progreso-en-un-reindexado-de-zope</guid><category>zope</category></item><item><title>Zope y noatime</title><link>http://pablocaro.es/zope-y-noatime</link><description>
+        Una fácil mejora para el rendimiento de un zope con problemas de acceso a disco es&lt;a href="http://tldp.org/LDP/solrhe/Securing-Optimizing-Linux-RH-Edition-v1.3/chap6sec73.html"&gt; no actualizar la fecha de último acceso&lt;/a&gt; al fichero de la base de datos Data.fs:
+
+&lt;pre lang="bash"&gt;
+chattr -R +A Data.fs
+&lt;/pre&gt;
+
+Simple y&amp;nbsp;efectivo.
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Sun, 25 Jul 2010 05:33:00 +0200</pubDate><guid>tag:pablocaro.es,2010-07-25:zope-y-noatime</guid><category>zope</category></item><item><title>Subversion: Añadiendo contenido a un directorio sin descargarlo</title><link>http://pablocaro.es/subversion-anadiendo-contenido-a-un-directorio-sin-descargarlo</link><description>
+        Caso práctico. Tengo un directorio &lt;em&gt;dev&lt;/em&gt; dentro del subversión con un montón de código con sus correspondientes ramas de &lt;code&gt;trunk&lt;/code&gt;, &lt;code&gt;branches&lt;/code&gt;, &lt;code&gt;tags&lt;/code&gt;, etc. Quiero añadir un nuevo producto pero no descargar todo ese enorme directorio &lt;em&gt;dev&lt;/em&gt;:
+&lt;pre lang="bash"&gt;svn co --depth empty https://repositorio/dev dev
+cp loquesea nuevo_producto
+svn add loquesea
+svn ci&lt;/pre&gt;
+Gracias ctabasco por la&amp;nbsp;anotación.
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Fri, 16 Jul 2010 05:05:00 +0200</pubDate><guid>tag:pablocaro.es,2010-07-16:subversion-anadiendo-contenido-a-un-directorio-sin-descargarlo</guid></item><item><title>Restaurando objectos plone borrados</title><link>http://pablocaro.es/restaurando-objectos-plone-borrados</link><description>
+        Para esas situaciones donde no funciona el undo, la salvación se llama &lt;a href="http://pypi.python.org/pypi/dm.historical"&gt;dm.historical&lt;/a&gt;
+
+Un claro ejemplo en &lt;a href="http://www.zopyx.de/blog/restoring-an-older-state-of-arbitrary-zope-objects" target="_blank"&gt;esta entrada&lt;/a&gt; del Blog de Andreas&amp;nbsp;Jung
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Wed, 14 Jul 2010 01:33:00 +0200</pubDate><guid>tag:pablocaro.es,2010-07-14:restaurando-objectos-plone-borrados</guid><category>zope</category></item><item><title>Completar mientras se depura en zope</title><link>http://pablocaro.es/completar-mientras-se-depura-en-zope</link><description>
+        Siempre tengo que buscar esto en google, para esto tengo el blog:
+
+&lt;pre lang="bash"&gt;
+$ bin/instance debug
+&lt;/pre&gt;
+
+&lt;pre lang="python"&gt;
+&gt;&gt;&gt; import readline, rlcompleter
+&gt;&gt;&gt; readline.parse_and_bind('tab: complete')
+&gt;&gt;&gt; app.
+Display all 760 possibilities? (y or n)
+&gt;&gt;&gt; 
+&lt;/pre&gt;
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Wed, 28 Apr 2010 03:33:00 +0200</pubDate><guid>tag:pablocaro.es,2010-04-28:completar-mientras-se-depura-en-zope</guid><category>web</category></item><item><title>Kbabel es Lokalize en kde4</title><link>http://pablocaro.es/kbabel-es-lokalize-en-kde4</link><description>
+        Ya era la segunda vez que no encontraba el maravilloso &lt;a href="http://kbabel.kde.org/" target="_blank"&gt;kbabel&lt;/a&gt; y es que en kde4 su sucesor se llama &lt;a href="http://userbase.kde.org/Lokalize" target="_blank"&gt;lokalize&lt;/a&gt;
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Thu, 25 Mar 2010 10:41:00 +0100</pubDate><guid>tag:pablocaro.es,2010-03-25:kbabel-es-lokalize-en-kde4</guid></item><item><title>Colores desde web developer tools</title><link>http://pablocaro.es/colores-desde-web-developer-tools</link><description>
+        Últimamente uso tanto &lt;a href="http://getfirebug.com/"&gt;firebug&lt;/a&gt; que ni me acuerdo de las &lt;a href="https://addons.mozilla.org/en-US/firefox/addon/60"&gt;Web Developer Tools&lt;/a&gt;.
+Escribo esto para recordar que sigue siendo muy útil esta extensión. 
+Por ejemplo, puedo ver los colores (css) usados en una página web a través del menú &lt;em&gt;Información&lt;/em&gt;, seleccionando &lt;em&gt;Ver información del color&lt;/em&gt;.
+
+
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Tue, 10 Nov 2009 04:55:00 +0100</pubDate><guid>tag:pablocaro.es,2009-11-10:colores-desde-web-developer-tools</guid><category>web</category></item><item><title>CSS: Estilos de selección de texto</title><link>http://pablocaro.es/css-estilos-de-seleccion-de-texto</link><description>
+        Una de esas declaraciones de &lt;span class="caps"&gt;CSS3&lt;/span&gt; que ya aceptan muchos navegadores actuales es &lt;strong&gt;::selection&lt;/strong&gt;.
+Se puede utilizar así:
+&lt;pre lang="css"&gt;
+p::selection {
+	background: #ccaacc; /* Safari */
+	}
+p::-moz-selection {
+	background: #ccaacc; /* Firefox */
+}
+&lt;/pre&gt;
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Thu, 09 Jul 2009 03:57:00 +0200</pubDate><guid>tag:pablocaro.es,2009-07-09:css-estilos-de-seleccion-de-texto</guid><category>web</category></item><item><title>Contenedor de Floats: How to IE &amp; FF</title><link>http://pablocaro.es/contenedor-de-floats-how-to-ie-ff</link><description>
+        Espero no olvidar esto más así que dejo la notita.
+
+Si tienes un elemento (por ejemplo un div#padre), que contiene sólo flotantes (otros divs por ejemplo), no será capaz &lt;span class="caps"&gt;IE&lt;/span&gt; de calcular bien su tamaño (se ve muy claro con un background).
+
+Para que funcione con explorer y firefox la regla es ponerle al elemento contenedor las reglas css:
+
+&lt;pre lang="css"&gt;
+div#padre {
+  overflow: hidden;
+  zoom:1;
+}
+&lt;/pre&gt;
+
+la regla del zoom es para aplicar el hasLayout en el ie6. No es estándar y es mejor ponerla en un condicional para este navegador.
+
+Nota personal: Pablo olvida el div con el clear:both que en este caso no es&amp;nbsp;solución.
+
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Thu, 21 May 2009 10:41:00 +0200</pubDate><guid>tag:pablocaro.es,2009-05-21:contenedor-de-floats-how-to-ie-ff</guid><category>web</category></item><item><title>Siempre el último Dragonfly en Opera</title><link>http://pablocaro.es/siempre-el-ultimo-dragonfly-en-opera</link><description>
+        Para tener la versión de desarrollo de dragon fly en el opera basta con seguir la ruta:
+
+&lt;code&gt;about:config -&amp;gt; Developer Tools -&amp;gt; Developer Tools url&lt;/code&gt;
+
+Luego, introducir la url siguiente
+
+&lt;a href="http://dragonfly.opera.com/app/cutting-edge/"&gt;http://dragonfly.opera.com/app/cutting-edge/&lt;/a&gt;
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Fri, 30 Jan 2009 08:45:00 +0100</pubDate><guid>tag:pablocaro.es,2009-01-30:siempre-el-ultimo-dragonfly-en-opera</guid></item><item><title>¿Cómo hacer un “svn export” con git?</title><link>http://pablocaro.es/como-hacer-un-svn-export-con-git</link><description>
+        Si tienes que descargarte un árbol git pero sin los metadatos, porque por ejemplo sólo quieres el código para congerlarlo versionado en el subversion de tu proyecto, lo más fácil es:
+
+git clone {clone-url}
+
+rm -rf .gitignore&amp;nbsp;.git
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Fri, 14 Nov 2008 05:04:00 +0100</pubDate><guid>tag:pablocaro.es,2008-11-14:como-hacer-un-svn-export-con-git</guid></item><item><title>svn:ignore</title><link>http://pablocaro.es/svn-ignore</link><description>
+        Esta entrada  es para recordar los dos comandos:
+
+svn propedit svn:ignore ./some_path
+
+svn -R propset svn:ignore -F ../.svnignore .
+
+donde .svnignore contiene un patron por línea como&amp;nbsp;*.pyc
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Thu, 13 Nov 2008 03:59:00 +0100</pubDate><guid>tag:pablocaro.es,2008-11-13:svn-ignore</guid></item><item><title>Error con setuptools y subversion 1.5</title><link>http://pablocaro.es/error-con-setuptools-y-subversion-1-5</link><description>
+        La actual versión de &lt;a target="_blank" href="http://peak.telecommunity.com/DevCenter/setuptools"&gt;setuptools&lt;/a&gt; no se lleva bien el subversion 1.5 (también el actual en mi ubuntu).
+
+Normalmente acostumbro a usar &lt;a target="_blank" href="http://pypi.python.org/pypi/virtualenv"&gt;virtualenv&lt;/a&gt; y me he encontrado con el error:
+&lt;pre&gt;NameError: global name 'log' is not defined&lt;/pre&gt;
+Ya está arreglado en el desarrollo de setuptools. Una posible solución es:
+&lt;pre&gt;easy_install setuptools==dev06'&lt;/pre&gt;
+&lt;a target="_blank" href="http://groups.google.com/group/linux.debian.bugs.dist/browse_thread/thread/b5d23c96e328b178/796fd556351da9ca?lnk=rao"&gt;Aquí temos más información&lt;/a&gt;.
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Sun, 14 Sep 2008 13:50:00 +0200</pubDate><guid>tag:pablocaro.es,2008-09-14:error-con-setuptools-y-subversion-1-5</guid><category>python</category></item><item><title>Buscando una fuente para escribir código</title><link>http://pablocaro.es/buscando-una-fuente-para-escribir-codigo</link><description>
+        Varios enlaces interesantes sobre este tema.
+&lt;ul&gt;
+	&lt;li&gt;&lt;a target="_blank" href="http://www.lowing.org/fonts/"&gt;Monospace/Fixed Width Programmer&amp;#8217;s Fonts&lt;/a&gt;. (Actualización de &lt;a target="_blank" href="http://www.kuro5hin.org/story/2004/12/6/11739/5249"&gt;Finding the Best Programmer&amp;#8217;s Font&lt;/a&gt;).&lt;/li&gt;
+	&lt;li&gt;&lt;a target="_blank" href="http://www.quickonlinetips.com/archives/2006/11/best-programming-fonts-for-easier-coding-and-readability/"&gt;Best Programming Fonts for Easy Coding and Readability&lt;/a&gt;.&lt;/li&gt;
+	&lt;li&gt;&lt;a target="_blank" href="http://www.briankotek.com/blog/index.cfm/2008/4/3/Development-Tip-Change-Your-Coding-Font"&gt;Development Tip: Change Your Coding Font&lt;/a&gt;.&lt;/li&gt;
+	&lt;li&gt;&lt;a target="_blank" href="http://www.codinghorror.com/blog/archives/000969.html"&gt;Revisiting Programming Fonts&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+Personalmente, la Bitstream Vera Sans Mono, me parece una fuente bastante aceptable. Me gusta mucho también Envy Code R.
+
+¿Qué tipo de letra es vuestra preferida para&amp;nbsp;codificar?
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Tue, 22 Jul 2008 09:43:00 +0200</pubDate><guid>tag:pablocaro.es,2008-07-22:buscando-una-fuente-para-escribir-codigo</guid></item><item><title>Ejecutar comandos en python</title><link>http://pablocaro.es/ejecutar-comandos-en-python</link><description>
+        Hago a menudo pequeños scripts en python. Y muchas de las veces necesito ejecutar algún comando del sistema.
+
+Habitualmente importaba el módulo &lt;code&gt;os&lt;/code&gt; y llamaba a alguna de sus funciones (las popen).
+
+Pero en general no hace falta importar os. Existe un módulo llamado &lt;a target="_blank" title="commands" href="http://docs.python.org/lib/module-commands.html"&gt;&lt;code&gt;commands&lt;/code&gt;&lt;/a&gt;&lt;code&gt; &lt;/code&gt;(sólo para unix) que permite realizar esta tarea con suma facilidad y mejor lectura del código.
+
+Dejar claro que para cosas más avanzadas es mejor usar &lt;code&gt;&lt;a target="_blank" href="http://docs.python.org/lib/module-subprocess.html"&gt;subprocess&lt;/a&gt; &lt;/code&gt; que pretende&amp;nbsp;reemplazarlo.
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Tue, 04 Mar 2008 06:18:00 +0100</pubDate><guid>tag:pablocaro.es,2008-03-04:ejecutar-comandos-en-python</guid><category>python</category></item></channel></rss>
