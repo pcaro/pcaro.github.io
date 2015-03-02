@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/postgresql.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 02 Mar 2015 08:26:00 +0100</lastBuildDate><item><title>pgcli el descubrimiento de hoy</title><link>http://pablocaro.es/pgcli-el-descubrimiento-de-hoy</link><description>&lt;p&gt;Leyendo mis feeds &lt;span class="caps"&gt;RSS&lt;/span&gt; acabo de dar con una herramienta muy útil. Se trata de &lt;a class="reference external" href="http://pgcli.com/"&gt;pgcli&lt;/a&gt; que no es más que una
+interfaz de línea de comandos para Postgres con autocompletado y resaltado de sintáxis.
+Como soy de usar la consola con las bases de datos, y postgres siempre es mi primera elección,
+me biene de perlas. with auto-completion and syntax&amp;nbsp;highlighting&lt;/p&gt;
+&lt;p&gt;Yo recommiendo instalarla mediante &lt;a class="reference external" href="https://github.com/mitsuhiko/pipsi"&gt;pipsi&lt;/a&gt;.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Mon, 02 Mar 2015 08:26:00 +0100</pubDate><guid>tag:pablocaro.es,2015-03-02:pgcli-el-descubrimiento-de-hoy</guid><category>postgresql</category></item></channel></rss>
