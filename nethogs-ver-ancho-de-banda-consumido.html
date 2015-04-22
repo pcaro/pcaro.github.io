@@ -7,7 +7,7 @@
         <meta name="author" content="Pablo Caro" />
         <meta name="copyright" content="Pablo Caro" />
 
-        <meta name="description" content="gpg --keyserver pgp.rediris.es --search-keys erevilla@yaco.es gpg: buscando «erevilla@yaco.es» de hkp servidor pgp.rediris.es (1) Ernesto Revilla Derksen (Yaco) 1024 bit DSA key 3E455F5A, creado: 2009-09-16 Keys 1-1 of 1 for &#34;erevilla@yaco.es&#34;. Introduzca número(s), O)tro, o F)in &gt; 1 gpg ...
+        <meta name="description" content="Para medir el ancho de banda que estoy utilizando en este momento utilizo NetHogs Por defecto busca una interfaz de red llamada &#34;eth0&#34; si no la encuenta se queja así: ioctl failed while establishing local IP for selected device eth0. You may specify the device on the command line. Puedes ...
 " />
         <meta name="twitter:creator" content="@pcaro">
         <meta property="og:type" content="article" />
@@ -15,18 +15,18 @@
 
 <meta name="keywords" content="linux, Sistemas, " />
 
-<meta property="og:title" content="Importar clave gpg. kgpg que gran programa "/>
-<meta property="og:url" content="http://pablocaro.es/importar-clave-gpg-kgpg-que-gran-programa" />
-<meta property="og:description" content="gpg --keyserver pgp.rediris.es --search-keys erevilla@yaco.es gpg: buscando «erevilla@yaco.es» de hkp servidor pgp.rediris.es (1) Ernesto Revilla Derksen (Yaco) 1024 bit DSA key 3E455F5A, creado: 2009-09-16 Keys 1-1 of 1 for &#34;erevilla@yaco.es&#34;. Introduzca número(s), O)tro, o F)in &gt; 1 gpg ..." />
+<meta property="og:title" content="NetHogs ver ancho de banda consumido "/>
+<meta property="og:url" content="http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido" />
+<meta property="og:description" content="Para medir el ancho de banda que estoy utilizando en este momento utilizo NetHogs Por defecto busca una interfaz de red llamada &#34;eth0&#34; si no la encuenta se queja así: ioctl failed while establishing local IP for selected device eth0. You may specify the device on the command line. Puedes ..." />
 <meta property="og:site_name" content="Anotaciones por Pablo Caro" />
 <meta property="og:article:author" content="Pablo Caro" />
-<meta property="og:article:published_time" content="2012-10-24T02:22:00+02:00" />
-<meta name="twitter:title" content="Importar clave gpg. kgpg que gran programa ">
-<meta name="twitter:description" content="gpg --keyserver pgp.rediris.es --search-keys erevilla@yaco.es gpg: buscando «erevilla@yaco.es» de hkp servidor pgp.rediris.es (1) Ernesto Revilla Derksen (Yaco) 1024 bit DSA key 3E455F5A, creado: 2009-09-16 Keys 1-1 of 1 for &#34;erevilla@yaco.es&#34;. Introduzca número(s), O)tro, o F)in &gt; 1 gpg ...">
+<meta property="og:article:published_time" content="2015-04-16T11:37:00+02:00" />
+<meta name="twitter:title" content="NetHogs ver ancho de banda consumido ">
+<meta name="twitter:description" content="Para medir el ancho de banda que estoy utilizando en este momento utilizo NetHogs Por defecto busca una interfaz de red llamada &#34;eth0&#34; si no la encuenta se queja así: ioctl failed while establishing local IP for selected device eth0. You may specify the device on the command line. Puedes ...">
 <meta property="og:image" content="/theme/images/apple-touch-icon-152x152.png" />
 <meta name="twitter:image" content="/theme/images/apple-touch-icon-152x152.png" >
 
-        <title>Importar clave gpg. kgpg que gran programa  · Anotaciones por Pablo Caro
+        <title>NetHogs ver ancho de banda consumido  · Anotaciones por Pablo Caro
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -85,7 +85,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://pablocaro.es/importar-clave-gpg-kgpg-que-gran-programa"> Importar clave gpg. kgpg que gran&nbsp;programa  </a></h1>
+    <h1><a href="http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido"> NetHogs ver ancho de banda&nbsp;consumido  </a></h1>
     </header>
 </div>
 
@@ -93,165 +93,63 @@
         <div class="span8 offset2 article-content">
 
             
-            
-    <pre lang="bash">
-        gpg --keyserver pgp.rediris.es --search-keys erevilla@yaco.es
+            <p>Para medir el ancho de banda que estoy utilizando en este momento utilizo&nbsp;NetHogs</p>
+<p>Por defecto busca una interfaz de red llamada &quot;eth0&quot; si no la encuenta se queja&nbsp;así:</p>
+<pre class="literal-block">
+ioctl failed while establishing local IP for selected device eth0. You may specify the device on the command line.
+</pre>
+<p>Puedes ver tu configuración de red con el comando <em>ip</em>:</p>
+<pre class="literal-block">
+$ ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: wlp3s0: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 84:3a:4b:50:14:cc brd ff:ff:ff:ff:ff:ff
+3: enp0s25: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 3c:97:0e:77:76:d3 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.39/24 brd 192.168.1.255 scope global dynamic enp0s25
+       valid_lft 28955sec preferred_lft 28955sec
+    inet6 fe80::3e97:eff:fe77:76d3/64 scope link
+       valid_lft forever preferred_lft forever
+</pre>
+<p>Como podéis ver en mi equipo tengo dos interfaces (aparte de la de loopback) que son enp0s25 (mi tarjeta de red con cable)
+y la wifi wlp3s0, en la que estoy conectado ahora que es la que voy a usar (podría listar las&nbsp;dos).</p>
+<p>De forma que&nbsp;ejecutando:</p>
+<pre class="literal-block">
+$ sudo nethogs enp0s25
+</pre>
+<p>Puedo ver los procesos que están consumiendo más ancho de&nbsp;banda.</p>
+<img alt="Nethogs" class="align-center" src="images/nethogs.png" />
+<p>La ayuda del comando&nbsp;es:</p>
+<pre class="literal-block">
+20:02 $ nethogs -h
+usage: nethogs [-V] [-b] [-d seconds] [-t] [-p] [device [device [device ...]]]
+                -V : prints version.
+                -d : delay for update refresh rate in seconds. default is 1.
+                -t : tracemode.
+                -b : bughunt mode - implies tracemode.
+                -p : sniff in promiscious mode (not recommended).
+                device : device(s) to monitor. default is eth0
 
-gpg: buscando «erevilla@yaco.es» de hkp servidor pgp.rediris.es
-(1) Ernesto Revilla Derksen (Yaco)
-1024 bit DSA key 3E455F5A, creado: 2009-09-16
-Keys 1-1 of 1 for "erevilla@yaco.es". Introduzca número(s), O)tro, o F)in &gt; 1
-gpg: solicitando clave 3E455F5A de hkp servidor pgp.rediris.es
-gpg: clave 3E455F5A: clave pública "Ernesto Revilla Derksen (Yaco) " importada
-gpg: no se encuentran claves totalmente fiables
-gpg: Cantidad total procesada: 1
-gpg: importadas: 1
-
-kmail dice:
-Mensaje firmado por erevilla@yaco.es (ID Clave: 0x4D76FA323E455F5A).
-La firma es válida, pero no se conoce la validez de la clave.
-
-Ver: http://www.gnupg.org/gph/en/manual/x56.html
-Tengo que dar validez con una firma mía
-
-pcaro@davinci$ gpg --edit-key 3E455F5A
-gpg (GnuPG) 1.4.9; Copyright (C) 2008 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
-pub 1024D/3E455F5A creado: 2009-09-16 [caduca: 2011-09-16] uso: SC
-confianza: desconocido validez: desconocido
-sub 2048g/1AAA03F0 creado: 2009-09-16 [caduca: 2011-09-16] uso: E
-desconocido (1). Ernesto Revilla Derksen (Yaco)
-
-Orden&gt; trust
-pub 1024D/3E455F5A creado: 2009-09-16 [caduca: 2011-09-16] uso: SC
-confianza: desconocido validez: desconocido
-sub 2048g/1AAA03F0 creado: 2009-09-16 [caduca: 2011-09-16] uso: E
-desconocido (1). Ernesto Revilla Derksen (Yaco)
-
-Por favor, decida su nivel de confianza para que este usuario
-verifique las claves de otros usuarios (mirando pasaportes,
-comprobando huellas dactilares en diferentes fuentes...)
-
-1 = No lo sé o prefiero no decirlo
-2 = NO tengo confianza
-3 = Confío un poco
-4 = Confío totalmente
-5 = confío absolutamente
-m = volver al menú principal
-
-¿Su decisión? 4
-
-pub 1024D/3E455F5A creado: 2009-09-16 [caduca: 2011-09-16] uso: SC
-confianza: total validez: desconocido
-sub 2048g/1AAA03F0 creado: 2009-09-16 [caduca: 2011-09-16] uso: E
-desconocido (1). Ernesto Revilla Derksen (Yaco)
-Por favor, advierta que la validez de clave mostrada no es necesariamente
-correcta a menos de que reinicie el programa.
-
+When nethogs is running, press:
+ q: quit
+ m: switch between total and kb/s mode
 </pre>
 
-<a href="http://www.fermu.com/content/view/231/2/lang,es/">http://www.fermu.com/content/view/231/2/lang,es/</a>
-
-<a href="http://www.rediris.es/pgp/">http://www.rediris.es/pgp/</a>
-
-<pre lang="bash">
-
-Generando mi propia clave:
-pcaro@davinci$ gpg --gen-key
-gpg (GnuPG) 1.4.9; Copyright (C) 2008 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
-Por favor seleccione tipo de clave deseado:
-(1) DSA y ElGamal (por defecto)
-(2) DSA (sólo firmar)
-(5) RSA (sólo firmar)
-¿Su selección?: 1
-El par de claves DSA tendrá 1024 bits.
-las claves ELG-E pueden tener entre 1024 y 4096 bits de longitud.
-¿De qué tamaño quiere la clave? (2048)
-El tamaño requerido es de 2048 bits
-Por favor, especifique el período de validez de la clave.
-0 = la clave nunca caduca
-= la clave caduca en n días
-w = la clave caduca en n semanas
-m = la clave caduca en n meses
-y = la clave caduca en n años
-¿Validez de la clave (0)? 3y
-La clave caduca lun 29 oct 2012 12:01:25 CET
-¿Es correcto? (s/n) s
-
-Necesita un identificador de usuario para identificar su clave. El programa
-construye el identificador a partir del Nombre Real, Comentario y Dirección
-de Correo electrónico de esta forma:
-"Heinrich Heine (Der Dichter)"
-
-Nombre y apellidos: Pablo Caro Revuelta
-Dirección de correo electrónico: pcaro@yaco.es
-Comentario:
-Ha seleccionado este ID de usuario:
-Â«Pablo Caro RevueltaÂ»
-
-¿Cambia (N)ombre, (C)omentario, (D)irección o (V)ale/(S)alir? C
-Comentario: pcaro
-Ha seleccionado este ID de usuario:
-Â«Pablo Caro Revuelta (pcaro)Â»
-
-¿Cambia (N)ombre, (C)omentario, (D)irección o (V)ale/(S)alir? V
-Necesita una frase contraseña para proteger su clave secreta.
-
-Es necesario generar muchos bytes aleatorios. Es una buena idea realizar
-alguna otra tarea (trabajar en otra ventana/consola, mover el ratón, usar
-la red y los discos) durante la generación de números primos. Esto da al
-generador de números aleatorios mayor oportunidad de recoger suficiente
-entropía.
-++++++++++.++++++++++++++++++++.++++++++++...+++++++++++++++..++++++++++++++++++++++++++++++..+++++..++++++++++.+++++++++++++++.++++++++++++++++++++......&gt;.+++++.................................+++++
-
-No hay suficientes bytes aleatorios disponibles. Por favor, haga algún
-otro trabajo para que el sistema pueda recolectar más entropía
-(se necesitan 280 bytes más).
-
-Es necesario generar muchos bytes aleatorios. Es una buena idea realizar
-alguna otra tarea (trabajar en otra ventana/consola, mover el ratón, usar
-la red y los discos) durante la generación de números primos. Esto da al
-generador de números aleatorios mayor oportunidad de recoger suficiente
-entropía.
-+++++++++++++++.+++++.+++++++++++++++..+++++.+++++..++++++++++++++++++++..++++++++++++++++++++.+++++.++++++++++++++++++++...+++++.++++++++++++++++++++.+++++++++++++++..&gt;..+++++........&gt;+++++.+++++.+++++....................+++++.....................................................+++++............................+++++^^^
-gpg: clave 4A52D5BA marcada como de confianza absoluta
-claves pública y secreta creadas y firmadas.
-
-gpg: comprobando base de datos de confianza
-gpg: 3 dudosa(s) necesarias, 1 completa(s) necesarias,
-modelo de confianza PGP
-gpg: nivel: 0 validez: 1 firmada: 0 confianza: 0-, 0q, 0n, 0m, 0f, 1u
-gpg: siguiente comprobación de base de datos de confianza el: 2012-10-29
-pub 1024D/4A52D5BA 2009-10-30 [[caduca: 2012-10-29]]
-Huella de clave = 483C F267 8A4B 0D27 3451 88A9 FE05 5E01 4A52 D5BA
-uid Pablo Caro Revuelta (pcaro) sub 2048g/7436FA09 2009-10-30 [[caduca: 2012-10-29]]
-
-</pre>
-
-<h2>programas&nbsp;graficos</h2>
-<pre lang="bash">
-sudo aptitude install kleopatra kgpg
-</pre>
-<p>
-Para que puedas enviar los correos firmados en kmail:
-<a href="http://randomguy3.wordpress.com/2008/07/24/kmail-trunk-signing/">http://randomguy3.wordpress.com/2008/07/24/kmail-trunk-signing/</a>
-</p>
-    
             <section>
     <p id="post-share-links">
     ¿Te gustó esta anotación? Compártela en:
-    <a href="http://twitter.com/home?status=Importar%20clave%20gpg.%20kgpg%20que%20gran%C2%A0programa%20 http%3A//pablocaro.es/importar-clave-gpg-kgpg-que-gran-programa" target="_blank" title="Compartir en Twitter">Twitter</a>
+    <a href="http://twitter.com/home?status=NetHogs%20ver%20ancho%20de%20banda%C2%A0consumido%20 http%3A//pablocaro.es/nethogs-ver-ancho-de-banda-consumido" target="_blank" title="Compartir en Twitter">Twitter</a>
     ❄
-    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//pablocaro.es/importar-clave-gpg-kgpg-que-gran-programa&p[images][0]=&p[title]=Importar%20clave%20gpg.%20kgpg%20que%20gran%C2%A0programa%20&p[summary]=%0D%0A%20%20%20%20%3Cpre%20lang%3D%22bash%22%3E%0D%0A%20%20%20%20%20%20%20%20gpg%20--keyserver%20pgp.rediris.es%20--search-keys%20erevilla%40yaco.es%0D%0A%0D%0Agpg%3A%20buscando%20%C2%ABerevilla%40yaco.es%C2%BB%20de%20hkp%20servidor%20pgp.rediris.es%0D%0A%281%29%20Ernesto%20Revilla%20Derksen%20%28Yaco%29%0D%0A1024%20bit%20DSA%20key%203E455F5A%2C%20creado%3A%202009-09-16%0D%0AKeys%201-1%20of%201%20for%20%22erevilla%40yaco.es%22.%20Introduzca%20n%C3%BAmero%28s%29%2C%20O%29tro%2C%20o%20F%29in%20%26gt%3B%201%0D%0Agpg%20...%3C/pre%3E" target="_blank" title="Compartir en Facebook">Facebook</a>
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//pablocaro.es/nethogs-ver-ancho-de-banda-consumido&p[images][0]=&p[title]=NetHogs%20ver%20ancho%20de%20banda%C2%A0consumido%20&p[summary]=%3Cp%3EPara%20medir%20el%20ancho%20de%20banda%20que%20estoy%20utilizando%20en%20este%20momento%20utilizo%26nbsp%3BNetHogs%3C/p%3E%0A%3Cp%3EPor%20defecto%20busca%20una%20interfaz%20de%20red%20llamada%20%26quot%3Beth0%26quot%3B%20si%20no%20la%20encuenta%20se%20queja%26nbsp%3Bas%C3%AD%3A%3C/p%3E%0A%3Cpre%20class%3D%22literal-block%22%3E%0Aioctl%20failed%20while%20establishing%20local%20IP%20for%20selected%20device%20eth0.%20You%20may%20specify%20the%20device%20on%20the%20command%20line.%0A%3C/pre%3E%0A%3Cp%3EPuedes%20...%3C/p%3E" target="_blank" title="Compartir en Facebook">Facebook</a>
     ❄
-    <a href="https://plus.google.com/share?url=http%3A//pablocaro.es/importar-clave-gpg-kgpg-que-gran-programa" target="_blank" title="Compartir en Google Plus">Google+</a>
+    <a href="https://plus.google.com/share?url=http%3A//pablocaro.es/nethogs-ver-ancho-de-banda-consumido" target="_blank" title="Compartir en Google Plus">Google+</a>
     ❄
-    <a href="mailto:?subject=Importar%20clave%20gpg.%20kgpg%20que%20gran%C2%A0programa%20&body=http%3A//pablocaro.es/importar-clave-gpg-kgpg-que-gran-programa" target="_blank" title="Compartir vía correo electrónico">Email</a>
+    <a href="mailto:?subject=NetHogs%20ver%20ancho%20de%20banda%C2%A0consumido%20&body=http%3A//pablocaro.es/nethogs-ver-ancho-de-banda-consumido" target="_blank" title="Compartir vía correo electrónico">Email</a>
     </p>
 </section>
 
@@ -261,7 +159,7 @@ Para que puedas enviar los correos firmados en kmail:
     <div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://pablocaro.es/importar-clave-gpg-kgpg-que-gran-programa#disqus_thread">
+                href="http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido#disqus_thread">
 Comentarios            </a>
         </div>
         <div id="disqus_thread" class="accordion-body collapse">
@@ -270,8 +168,8 @@ Comentarios            </a>
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'anotaciones';
-        var disqus_identifier = 'http://pablocaro.es/importar-clave-gpg-kgpg-que-gran-programa';
-    var disqus_url = 'http://pablocaro.es/importar-clave-gpg-kgpg-que-gran-programa';
+        var disqus_identifier = 'http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido';
+    var disqus_url = 'http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido';
 
     (function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -294,7 +192,7 @@ Comentarios            </a>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Publicado</h4>
-            <time pubdate="pubdate" datetime="2012-10-24T02:22:00+02:00">oct 24, 2012</time>
+            <time pubdate="pubdate" datetime="2015-04-16T11:37:00+02:00">abr 16, 2015</time>
             <h4>Categoría</h4>
             <a class="category-link" href="http://pablocaro.es/categories.html#sistemas-ref">Sistemas</a>
             <h4>Tags</h4>
