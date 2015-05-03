@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/django.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 21 Nov 2014 11:12:00 +0100</lastBuildDate><item><title>Decorador vista ajax</title><link>http://pablocaro.es/decorador-vista-ajax</link><description>&lt;p&gt;Para obligar que una vista &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;django&lt;/a&gt; sea llamada sólo mediante llamamas &lt;span class="caps"&gt;AJAX&lt;/span&gt;.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/django.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 20 Apr 2015 18:18:00 +0200</lastBuildDate><item><title>Instalar InSync en Opensuse</title><link>http://pablocaro.es/instalar-insync-en-opensuse</link><description>&lt;p&gt;Llevo varios dias probando &lt;a class="reference external" href="https://www.insynchq.com/downloads"&gt;insync&lt;/a&gt; y creo que lo voy a pagar con&amp;nbsp;gusto.&lt;/p&gt;
+&lt;p&gt;Me he descargado dos paquetes, uno para el menu contextual de dolphin y otro (el de fedora) para el propio programa en&amp;nbsp;sí:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+20:39 $ rpm -qa | grep insync
+insync-1.2.7.35123-fc20.x86_64
+insync-dolphin-1.2.7.35123-fc17.noarch
+&lt;/pre&gt;
+&lt;p&gt;Todo funcionando perfectamente en mi&amp;nbsp;opensuse&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Mon, 20 Apr 2015 18:18:00 +0200</pubDate><guid>tag:pablocaro.es,2015-04-20:instalar-insync-en-opensuse</guid><category>django</category><category>python</category></item><item><title>Decorador vista ajax</title><link>http://pablocaro.es/decorador-vista-ajax</link><description>&lt;p&gt;Para obligar que una vista &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;django&lt;/a&gt; sea llamada sólo mediante llamamas &lt;span class="caps"&gt;AJAX&lt;/span&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;ajax_required&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 &lt;span class="sd"&gt;    AJAX request required decorator&lt;/span&gt;

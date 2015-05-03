@@ -2,9 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pablocaro.es/</loc>
-<lastmod>2015-04-16</lastmod>
+<lastmod>2015-04-20</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
+</url><url>
+<loc>http://pablocaro.es/instalar-insync-en-opensuse</loc>
+<lastmod>2015-04-20</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
 </url><url>
 <loc>http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido</loc>
 <lastmod>2015-04-16</lastmod>
@@ -492,7 +497,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://pablocaro.es/category/sistemas.html</loc>
-<lastmod>2015-04-16</lastmod>
+<lastmod>2015-04-20</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -502,7 +507,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://pablocaro.es/tag/django.html</loc>
-<lastmod>2014-11-21</lastmod>
+<lastmod>2015-04-20</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -527,7 +532,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://pablocaro.es/tag/python.html</loc>
-<lastmod>2015-03-13</lastmod>
+<lastmod>2015-04-20</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -542,7 +547,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://pablocaro.es/author/pablo-caro.html</loc>
-<lastmod>2015-04-16</lastmod>
+<lastmod>2015-04-20</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>

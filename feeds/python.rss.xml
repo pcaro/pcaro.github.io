@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/python.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 13 Mar 2015 17:11:00 +0100</lastBuildDate><item><title>Cierra Google Code</title><link>http://pablocaro.es/cierra-google-code</link><description>&lt;p&gt;Lo dicho, Google anunció el cierre de Google&amp;nbsp;Code.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/python.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 20 Apr 2015 18:18:00 +0200</lastBuildDate><item><title>Instalar InSync en Opensuse</title><link>http://pablocaro.es/instalar-insync-en-opensuse</link><description>&lt;p&gt;Llevo varios dias probando &lt;a class="reference external" href="https://www.insynchq.com/downloads"&gt;insync&lt;/a&gt; y creo que lo voy a pagar con&amp;nbsp;gusto.&lt;/p&gt;
+&lt;p&gt;Me he descargado dos paquetes, uno para el menu contextual de dolphin y otro (el de fedora) para el propio programa en&amp;nbsp;sí:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+20:39 $ rpm -qa | grep insync
+insync-1.2.7.35123-fc20.x86_64
+insync-dolphin-1.2.7.35123-fc17.noarch
+&lt;/pre&gt;
+&lt;p&gt;Todo funcionando perfectamente en mi&amp;nbsp;opensuse&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Mon, 20 Apr 2015 18:18:00 +0200</pubDate><guid>tag:pablocaro.es,2015-04-20:instalar-insync-en-opensuse</guid><category>django</category><category>python</category></item><item><title>Cierra Google Code</title><link>http://pablocaro.es/cierra-google-code</link><description>&lt;p&gt;Lo dicho, Google anunció el cierre de Google&amp;nbsp;Code.&lt;/p&gt;
 &lt;p&gt;Hoy mismo recibí el correo avisandome (tenía un proyecto de prueba alojado allí) de que podía mover
 mis proyectos de forma simple a &lt;a class="reference external" href="http://github.com"&gt;github&lt;/a&gt;, el repositorio de facto hoy en día del software libre
 (lo siento por &lt;a class="reference external" href="https://bitbucket.org/pcaro"&gt;bitbucket&lt;/a&gt; y sobre todo por &lt;a class="reference external" href="http://mercurial.selenic.com/"&gt;mercurial&lt;/a&gt;).&lt;/p&gt;
