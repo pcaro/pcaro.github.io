@@ -7,26 +7,26 @@
         <meta name="author" content="Pablo Caro" />
         <meta name="copyright" content="Pablo Caro" />
 
-        <meta name="description" content="Otra de las ordenes que nunca recuerdo. Estando dentro de ipython para cambiar el prompt de forma que luego sea fácil crear doctests: %doctest_mode Esto entra en el modo doctest de ipython. También puede ayudar %history -tn para recordar los commandos introducidos previamente.
+        <meta name="description" content="Vamos a utilizar hilos en python para ejecutar periodicamente una función
 " />
         <meta name="twitter:creator" content="@pcaro">
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="python, Sin Categoría, " />
+<meta name="keywords" content="python, Progamación, " />
 
-<meta property="og:title" content="Cambiar ipython para copiar y pegar luego como doctest "/>
-<meta property="og:url" content="http://pablocaro.es/cambiar-ipython-para-copiar-y-pegar-luego-como-doctest" />
-<meta property="og:description" content="Otra de las ordenes que nunca recuerdo. Estando dentro de ipython para cambiar el prompt de forma que luego sea fácil crear doctests: %doctest_mode Esto entra en el modo doctest de ipython. También puede ayudar %history -tn para recordar los commandos introducidos previamente." />
+<meta property="og:title" content="Repitiendo una función con hilos "/>
+<meta property="og:url" content="http://pablocaro.es/repetiendo-una-función-con-hilos" />
+<meta property="og:description" content="Vamos a utilizar hilos en python para ejecutar periodicamente una función" />
 <meta property="og:site_name" content="Anotaciones por Pablo Caro" />
 <meta property="og:article:author" content="Pablo Caro" />
-<meta property="og:article:published_time" content="2009-02-02T04:23:00+01:00" />
-<meta name="twitter:title" content="Cambiar ipython para copiar y pegar luego como doctest ">
-<meta name="twitter:description" content="Otra de las ordenes que nunca recuerdo. Estando dentro de ipython para cambiar el prompt de forma que luego sea fácil crear doctests: %doctest_mode Esto entra en el modo doctest de ipython. También puede ayudar %history -tn para recordar los commandos introducidos previamente.">
+<meta property="og:article:published_time" content="2015-05-03T21:00:00+02:00" />
+<meta name="twitter:title" content="Repitiendo una función con hilos ">
+<meta name="twitter:description" content="Vamos a utilizar hilos en python para ejecutar periodicamente una función">
 <meta property="og:image" content="/theme/images/apple-touch-icon-152x152.png" />
 <meta name="twitter:image" content="/theme/images/apple-touch-icon-152x152.png" >
 
-        <title>Cambiar ipython para copiar y pegar luego como doctest  · Anotaciones por Pablo Caro
+        <title>Repitiendo una función con hilos  · Anotaciones por Pablo Caro
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -85,7 +85,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://pablocaro.es/cambiar-ipython-para-copiar-y-pegar-luego-como-doctest"> Cambiar ipython para copiar y pegar luego como&nbsp;doctest  </a></h1>
+    <h1><a href="http://pablocaro.es/repetiendo-una-función-con-hilos"> Repitiendo una función con&nbsp;hilos  </a></h1>
     </header>
 </div>
 
@@ -93,24 +93,74 @@
         <div class="span8 offset2 article-content">
 
             
-            
-        Otra de las ordenes que nunca recuerdo. Estando dentro de <a title="ipython" href="http://ipython.scipy.org/moin/" target="_blank">ipython</a> para cambiar el prompt de forma que luego sea fácil crear <a title="doctest" href="http://docs.python.org/library/doctest.html" target="_blank">doctests</a>:
+            <p>Tengo un servicio (con <a class="reference external" href="https://github.com/jnrbsn/daemonocle">daemonocle</a>  del que ya hablaré otro día) corriendo todo el tiempo en una <a class="reference external" href="http://www.hardkernel.com/main/products/prdt_info.php">odroid c1</a>.
+Consideré que era mejor controlar con hilos unas tareas periódicas que tengo que repetir (que ya estaba usando)
+en lugar de la típica entrada en&nbsp;cron.</p>
+<p>Así puedo contrar mejor el funcionamiento de las mismas. Las ventajas para mí en este caso y para estas tareas&nbsp;concretas:</p>
+<ul class="simple">
+<li>Ya tengo la configuración de logging realizada por el proceso principal. Estas tareas dejan su info en mis log&nbsp;rotacionales.</li>
+<li>Parando  (arrancando) el servicio lo paro todo y a la&nbsp;vez.</li>
+<li>Mido el consumo de recursos en su&nbsp;conjunto</li>
+</ul>
+<p>Dejo el snippet&nbsp;utilizado.</p>
+<p>En  <code class="code">
+utils.py</code>
+:</p>
+<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">import</span> <span class="nn">threading</span>
 
-<strong><tt>%doctest_mode</tt></strong>
 
-Esto entra en  el modo doctest de ipython. También puede ayudar <strong><tt>%history -tn</tt></strong><tt> para recordar los commandos introducidos previamente.
-</tt>
-    
+<span class="k">class</span> <span class="nc">RepeatedTimer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="o">=</span> <span class="n">interval</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_running</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_running</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_running</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_running</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timer</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_running</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></div>
+<p>En <code class="code">
+main.py</code>
+ podeís ver su uso, una de las funciones recibe un&nbsp;parámetro:</p>
+<div class="highlight"><pre><span class="n">setup_logging</span><span class="p">()</span>
+<span class="n">youtube</span> <span class="o">=</span> <span class="n">youtube_api</span><span class="o">.</span><span class="n">get_authenticated_service</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">events_thread</span> <span class="o">=</span> <span class="n">RepeatedTimer</span><span class="p">(</span><span class="n">UPDATE_EVENTS_SECONDS</span><span class="p">,</span> <span class="n">backend_api</span><span class="o">.</span><span class="n">update_events_database</span><span class="p">)</span>
+<span class="n">streams_thread</span> <span class="o">=</span> <span class="n">RepeatedTimer</span><span class="p">(</span><span class="n">UPDATE_STREAM_SECONDS</span><span class="p">,</span> <span class="n">youtube_api</span><span class="o">.</span><span class="n">update_streams_database</span><span class="p">,</span> <span class="n">youtube</span><span class="p">)</span>
+</pre></div>
+<p>Deciros que paro estos hilos y limpio recursos en el evento de callback para shutdown que es de lo mejor de <code class="code">
+daemonocle</code>
+.
+Ya sabéis que python no es capaz de paralelizar del todo los hilos debido a al <span class="caps">GIL</span>, pero para tareas simples como estas con muy poca carga
+es simple y funciona a la&nbsp;perfección.</p>
+
             <section>
     <p id="post-share-links">
     ¿Te gustó esta anotación? Compártela en:
-    <a href="http://twitter.com/home?status=Cambiar%20ipython%20para%20copiar%20y%20pegar%20luego%20como%C2%A0doctest%20 http%3A//pablocaro.es/cambiar-ipython-para-copiar-y-pegar-luego-como-doctest" target="_blank" title="Compartir en Twitter">Twitter</a>
+    <a href="http://twitter.com/home?status=Repitiendo%20una%20funci%C3%B3n%20con%C2%A0hilos%20 http%3A//pablocaro.es/repetiendo-una-funci%C3%B3n-con-hilos" target="_blank" title="Compartir en Twitter">Twitter</a>
     ❄
-    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//pablocaro.es/cambiar-ipython-para-copiar-y-pegar-luego-como-doctest&p[images][0]=&p[title]=Cambiar%20ipython%20para%20copiar%20y%20pegar%20luego%20como%C2%A0doctest%20&p[summary]=%0A%20%20%20%20%20%20%20%20Otra%20de%20las%20ordenes%20que%20nunca%20recuerdo.%20Estando%20dentro%20de%20%3Ca%20title%3D%22ipython%22%20href%3D%22http%3A//ipython.scipy.org/moin/%22%20target%3D%22_blank%22%3Eipython%3C/a%3E%20para%20cambiar%20el%20prompt%20de%20forma%20que%20luego%20sea%20f%C3%A1cil%20crear%20%3Ca%20title%3D%22doctest%22%20href%3D%22http%3A//docs.python.org/library/doctest.html%22%20target%3D%22_blank%22%3Edoctests%3C/a%3E%3A%0D%0A%0D%0A%3Cstrong%3E%3Ctt%3E%25doctest_mode%3C/tt%3E%3C/strong%3E%0D%0A%0D%0AEsto%20entra%20en%C2%A0%20el%20modo%20doctest%20de%20ipython.%20Tambi%C3%A9n%20puede%20ayudar%20%3Cstrong%3E%3Ctt%3E%25history%20-tn%3C/tt%3E%3C/strong%3E%3Ctt%3E%20para%20recordar%20los%20commandos%20introducidos%20previamente.%0D%0A%3C/tt%3E%0A%20%20%20%20" target="_blank" title="Compartir en Facebook">Facebook</a>
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//pablocaro.es/repetiendo-una-funci%C3%B3n-con-hilos&p[images][0]=&p[title]=Repitiendo%20una%20funci%C3%B3n%20con%C2%A0hilos%20&p[summary]=%3Cp%20class%3D%22first%20last%22%3EVamos%20a%20utilizar%20hilos%20en%20python%20para%20ejecutar%20periodicamente%20una%26nbsp%3Bfunci%C3%B3n%3C/p%3E%0A" target="_blank" title="Compartir en Facebook">Facebook</a>
     ❄
-    <a href="https://plus.google.com/share?url=http%3A//pablocaro.es/cambiar-ipython-para-copiar-y-pegar-luego-como-doctest" target="_blank" title="Compartir en Google Plus">Google+</a>
+    <a href="https://plus.google.com/share?url=http%3A//pablocaro.es/repetiendo-una-funci%C3%B3n-con-hilos" target="_blank" title="Compartir en Google Plus">Google+</a>
     ❄
-    <a href="mailto:?subject=Cambiar%20ipython%20para%20copiar%20y%20pegar%20luego%20como%C2%A0doctest%20&body=http%3A//pablocaro.es/cambiar-ipython-para-copiar-y-pegar-luego-como-doctest" target="_blank" title="Compartir vía correo electrónico">Email</a>
+    <a href="mailto:?subject=Repitiendo%20una%20funci%C3%B3n%20con%C2%A0hilos%20&body=http%3A//pablocaro.es/repetiendo-una-funci%C3%B3n-con-hilos" target="_blank" title="Compartir vía correo electrónico">Email</a>
     </p>
 </section>
 
@@ -120,7 +170,7 @@ Esto entra en  el modo doctest de ipython. También puede ayudar <strong><tt>%h
     <div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://pablocaro.es/cambiar-ipython-para-copiar-y-pegar-luego-como-doctest#disqus_thread">
+                href="http://pablocaro.es/repetiendo-una-función-con-hilos#disqus_thread">
 Comentarios            </a>
         </div>
         <div id="disqus_thread" class="accordion-body collapse">
@@ -129,8 +179,8 @@ Comentarios            </a>
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'anotaciones';
-        var disqus_identifier = 'http://pablocaro.es/cambiar-ipython-para-copiar-y-pegar-luego-como-doctest';
-    var disqus_url = 'http://pablocaro.es/cambiar-ipython-para-copiar-y-pegar-luego-como-doctest';
+        var disqus_identifier = 'http://pablocaro.es/repetiendo-una-función-con-hilos';
+    var disqus_url = 'http://pablocaro.es/repetiendo-una-función-con-hilos';
 
     (function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -153,9 +203,9 @@ Comentarios            </a>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Publicado</h4>
-            <time pubdate="pubdate" datetime="2009-02-02T04:23:00+01:00">feb 2, 2009</time>
+            <time pubdate="pubdate" datetime="2015-05-03T21:00:00+02:00">may 3, 2015</time>
             <h4>Categoría</h4>
-            <a class="category-link" href="http://pablocaro.es/categories.html#sin-categoria-ref">Sin Categoría</a>
+            <a class="category-link" href="http://pablocaro.es/categories.html#progamacion-ref">Progamación</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
                 <li><a href="http://pablocaro.es/tags.html#python-ref">python
