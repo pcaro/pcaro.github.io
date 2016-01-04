@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/linux.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 16 Apr 2015 11:37:00 +0200</lastBuildDate><item><title>NetHogs ver ancho de banda consumido</title><link>http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido</link><description>&lt;p&gt;Para medir el ancho de banda que estoy utilizando en este momento utilizo&amp;nbsp;NetHogs&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/linux.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 01 Jan 2016 07:00:00 +0100</lastBuildDate><item><title>Botón central en firefox</title><link>http://pablocaro.es/boton_central_firefox</link><description>&lt;p&gt;Otra nota recordatoria.
+Habitualmente abro los enlaces en nueva ventana en firefox usando el botón central.
+Me ocurre a menudo que tengo una url en el clipboard y firefox entonces me la abre en lugar del enlace.
+Para evitarlo, simplemente  &lt;code class="code"&gt;
+about:config&lt;/code&gt;
+ y establecer la propiedad &lt;code class="code"&gt;
+middlemouse.contentLoadURL&lt;/code&gt;
+ a&amp;nbsp;false.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Fri, 01 Jan 2016 07:00:00 +0100</pubDate><guid>tag:pablocaro.es,2016-01-01:boton_central_firefox</guid><category>linux</category></item><item><title>NetHogs ver ancho de banda consumido</title><link>http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido</link><description>&lt;p&gt;Para medir el ancho de banda que estoy utilizando en este momento utilizo&amp;nbsp;NetHogs&lt;/p&gt;
 &lt;p&gt;Por defecto busca una interfaz de red llamada &amp;quot;eth0&amp;quot; si no la encuenta se queja&amp;nbsp;así:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 ioctl failed while establishing local IP for selected device eth0. You may specify the device on the command line.

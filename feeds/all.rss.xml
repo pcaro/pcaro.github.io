@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 03 May 2015 21:00:00 +0200</lastBuildDate><item><title>Repitiendo una función con hilos</title><link>http://pablocaro.es/repetiendo-una-funci%C3%B3n-con-hilos</link><description>&lt;p&gt;Tengo un servicio (con &lt;a class="reference external" href="https://github.com/jnrbsn/daemonocle"&gt;daemonocle&lt;/a&gt;  del que ya hablaré otro día) corriendo todo el tiempo en una &lt;a class="reference external" href="http://www.hardkernel.com/main/products/prdt_info.php"&gt;odroid c1&lt;/a&gt;.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 01 Jan 2016 07:00:00 +0100</lastBuildDate><item><title>Botón central en firefox</title><link>http://pablocaro.es/boton_central_firefox</link><description>&lt;p&gt;Otra nota recordatoria.
+Habitualmente abro los enlaces en nueva ventana en firefox usando el botón central.
+Me ocurre a menudo que tengo una url en el clipboard y firefox entonces me la abre en lugar del enlace.
+Para evitarlo, simplemente  &lt;code class="code"&gt;
+about:config&lt;/code&gt;
+ y establecer la propiedad &lt;code class="code"&gt;
+middlemouse.contentLoadURL&lt;/code&gt;
+ a&amp;nbsp;false.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Fri, 01 Jan 2016 07:00:00 +0100</pubDate><guid>tag:pablocaro.es,2016-01-01:boton_central_firefox</guid><category>linux</category></item><item><title>Repitiendo una función con hilos</title><link>http://pablocaro.es/repetiendo-una-funci%C3%B3n-con-hilos</link><description>&lt;p&gt;Tengo un servicio (con &lt;a class="reference external" href="https://github.com/jnrbsn/daemonocle"&gt;daemonocle&lt;/a&gt;  del que ya hablaré otro día) corriendo todo el tiempo en una &lt;a class="reference external" href="http://www.hardkernel.com/main/products/prdt_info.php"&gt;odroid c1&lt;/a&gt;.
 Consideré que era mejor controlar con hilos unas tareas periódicas que tengo que repetir (que ya estaba usando)
 en lugar de la típica entrada en&amp;nbsp;cron.&lt;/p&gt;
 &lt;p&gt;Así puedo contrar mejor el funcionamiento de las mismas. Las ventajas para mí en este caso y para estas tareas&amp;nbsp;concretas:&lt;/p&gt;

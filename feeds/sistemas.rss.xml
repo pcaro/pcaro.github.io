@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/sistemas.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 20 Apr 2015 18:18:00 +0200</lastBuildDate><item><title>Instalar InSync en Opensuse</title><link>http://pablocaro.es/instalar-insync-en-opensuse</link><description>&lt;p&gt;Llevo varios dias probando &lt;a class="reference external" href="https://www.insynchq.com/"&gt;insync&lt;/a&gt; y creo que lo voy a pagar con&amp;nbsp;gusto.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anotaciones por Pablo Caro</title><link>http://pablocaro.es/</link><description>Anotaciones</description><atom:link href="http://pablocaro.es/feeds/sistemas.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 01 Jan 2016 07:00:00 +0100</lastBuildDate><item><title>Botón central en firefox</title><link>http://pablocaro.es/boton_central_firefox</link><description>&lt;p&gt;Otra nota recordatoria.
+Habitualmente abro los enlaces en nueva ventana en firefox usando el botón central.
+Me ocurre a menudo que tengo una url en el clipboard y firefox entonces me la abre en lugar del enlace.
+Para evitarlo, simplemente  &lt;code class="code"&gt;
+about:config&lt;/code&gt;
+ y establecer la propiedad &lt;code class="code"&gt;
+middlemouse.contentLoadURL&lt;/code&gt;
+ a&amp;nbsp;false.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Pablo Caro</dc:creator><pubDate>Fri, 01 Jan 2016 07:00:00 +0100</pubDate><guid>tag:pablocaro.es,2016-01-01:boton_central_firefox</guid><category>linux</category></item><item><title>Instalar InSync en Opensuse</title><link>http://pablocaro.es/instalar-insync-en-opensuse</link><description>&lt;p&gt;Llevo varios dias probando &lt;a class="reference external" href="https://www.insynchq.com/"&gt;insync&lt;/a&gt; y creo que lo voy a pagar con&amp;nbsp;gusto.&lt;/p&gt;
 &lt;p&gt;Me he descargado dos paquetes, uno para el menu contextual de dolphin y otro (el de fedora) para el propio programa en&amp;nbsp;sí:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 20:39 $ rpm -qa | grep insync

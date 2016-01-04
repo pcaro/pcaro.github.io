@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Anotaciones por Pablo Caro</title><link href="http://pablocaro.es/" rel="alternate"></link><link href="http://pablocaro.es/feeds/linux.atom.xml" rel="self"></link><id>http://pablocaro.es/</id><updated>2015-04-16T11:37:00+02:00</updated><entry><title>NetHogs ver ancho de banda consumido</title><link href="http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido" rel="alternate"></link><updated>2015-04-16T11:37:00+02:00</updated><author><name>Pablo Caro</name></author><id>tag:pablocaro.es,2015-04-16:nethogs-ver-ancho-de-banda-consumido</id><summary type="html">&lt;p&gt;Para medir el ancho de banda que estoy utilizando en este momento utilizo&amp;nbsp;NetHogs&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Anotaciones por Pablo Caro</title><link href="http://pablocaro.es/" rel="alternate"></link><link href="http://pablocaro.es/feeds/linux.atom.xml" rel="self"></link><id>http://pablocaro.es/</id><updated>2016-01-01T07:00:00+01:00</updated><entry><title>Botón central en firefox</title><link href="http://pablocaro.es/boton_central_firefox" rel="alternate"></link><updated>2016-01-01T07:00:00+01:00</updated><author><name>Pablo Caro</name></author><id>tag:pablocaro.es,2016-01-01:boton_central_firefox</id><summary type="html">&lt;p&gt;Otra nota recordatoria.
+Habitualmente abro los enlaces en nueva ventana en firefox usando el botón central.
+Me ocurre a menudo que tengo una url en el clipboard y firefox entonces me la abre en lugar del enlace.
+Para evitarlo, simplemente  &lt;code class="code"&gt;
+about:config&lt;/code&gt;
+ y establecer la propiedad &lt;code class="code"&gt;
+middlemouse.contentLoadURL&lt;/code&gt;
+ a&amp;nbsp;false.&lt;/p&gt;
+</summary><category term="linux"></category></entry><entry><title>NetHogs ver ancho de banda consumido</title><link href="http://pablocaro.es/nethogs-ver-ancho-de-banda-consumido" rel="alternate"></link><updated>2015-04-16T11:37:00+02:00</updated><author><name>Pablo Caro</name></author><id>tag:pablocaro.es,2015-04-16:nethogs-ver-ancho-de-banda-consumido</id><summary type="html">&lt;p&gt;Para medir el ancho de banda que estoy utilizando en este momento utilizo&amp;nbsp;NetHogs&lt;/p&gt;
 &lt;p&gt;Por defecto busca una interfaz de red llamada &amp;quot;eth0&amp;quot; si no la encuenta se queja&amp;nbsp;así:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 ioctl failed while establishing local IP for selected device eth0. You may specify the device on the command line.
