@@ -2,9 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pablocaro.es/</loc>
-<lastmod>2016-01-01</lastmod>
+<lastmod>2016-07-28</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
+</url><url>
+<loc>http://pablocaro.es/gmail_correo_no_leido_solo_en_principal</loc>
+<lastmod>2016-07-28</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.80</priority>
 </url><url>
 <loc>http://pablocaro.es/boton_central_firefox</loc>
 <lastmod>2016-01-01</lastmod>
@@ -506,6 +511,11 @@
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
+<loc>http://pablocaro.es/category/trucos.html</loc>
+<lastmod>2016-07-28</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.40</priority>
+</url><url>
 <loc>http://pablocaro.es/tag/net.html</loc>
 <lastmod>2006-12-15</lastmod>
 <changefreq>monthly</changefreq>
@@ -527,7 +537,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://pablocaro.es/tag/linux.html</loc>
-<lastmod>2016-01-01</lastmod>
+<lastmod>2016-07-28</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url><url>
@@ -552,7 +562,7 @@
 <priority>0.40</priority>
 </url><url>
 <loc>http://pablocaro.es/author/pablo-caro.html</loc>
-<lastmod>2016-01-01</lastmod>
+<lastmod>2016-07-28</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.40</priority>
 </url>

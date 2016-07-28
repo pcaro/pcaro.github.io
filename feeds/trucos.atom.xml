@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Anotaciones por Pablo Caro</title><link href="http://pablocaro.es/" rel="alternate"></link><link href="http://pablocaro.es/feeds/trucos.atom.xml" rel="self"></link><id>http://pablocaro.es/</id><updated>2016-07-28T18:00:00+02:00</updated><entry><title>Correo no leído en pestaña principal de gmail</title><link href="http://pablocaro.es/gmail_correo_no_leido_solo_en_principal" rel="alternate"></link><updated>2016-07-28T18:00:00+02:00</updated><author><name>Pablo Caro</name></author><id>tag:pablocaro.es,2016-07-28:gmail_correo_no_leido_solo_en_principal</id><summary type="html">&lt;p&gt;Lo de siempre, otra nota&amp;nbsp;recordatoria.&lt;/p&gt;
+&lt;p&gt;Si filtras el correo en gmail por no leído (&lt;code class="code"&gt;
+is:unread&lt;/code&gt;
+), obtienes todo el correo no leído,
+que en mi caso siempre incluye cientos de notificaciones, social, promociones o foros que no suele ser lo que&amp;nbsp;busco.&lt;/p&gt;
+&lt;p&gt;Para buscar los correos no leídos &lt;em&gt;de la pestaña Principal&lt;/em&gt; la consulta a realizar es&amp;nbsp;esta:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+is:inbox -category:(updates OR promotions OR social OR forums) is:unread
+&lt;/pre&gt;
+</summary><category term="linux"></category></entry></feed>
