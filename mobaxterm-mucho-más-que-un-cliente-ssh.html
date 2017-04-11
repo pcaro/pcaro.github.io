@@ -7,26 +7,25 @@
         <meta name="author" content="Pablo Caro" />
         <meta name="copyright" content="Pablo Caro" />
 
-        <meta name="description" content="Lo suelo usar durante el principio de los proyectos. from django.conf import settings as django_settings from django.core.exceptions import ImproperlyConfigured def settings(request): &#34;&#34;&#34; Adds the settings specified in settings.TEMPLATE_VISIBLE_SETTINGS to the request context. &#34;&#34;&#34; new_settings = {} for attr in django_settings.TEMPLATE_VISIBLE_SETTINGS: try: new_settings[attr] = getattr(django_settings, attr) except AttributeError ...
-" />
+        <meta name="description" content="" />
         <meta name="twitter:creator" content="@pcaro">
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="python, django, Programación, " />
+<meta name="keywords" content="django, python, Progamación, linux" />
 
-<meta property="og:title" content="Settings vars processor "/>
-<meta property="og:url" content="http://pablocaro.es/settings-vars-processor" />
-<meta property="og:description" content="Lo suelo usar durante el principio de los proyectos. from django.conf import settings as django_settings from django.core.exceptions import ImproperlyConfigured def settings(request): &#34;&#34;&#34; Adds the settings specified in settings.TEMPLATE_VISIBLE_SETTINGS to the request context. &#34;&#34;&#34; new_settings = {} for attr in django_settings.TEMPLATE_VISIBLE_SETTINGS: try: new_settings[attr] = getattr(django_settings, attr) except AttributeError ..." />
+<meta property="og:title" content="MobaXterm. Mucho más que un cliente ssh "/>
+<meta property="og:url" content="http://pablocaro.es/mobaxterm-mucho-más-que-un-cliente-ssh" />
+<meta property="og:description" content="" />
 <meta property="og:site_name" content="Anotaciones por Pablo Caro" />
 <meta property="og:article:author" content="Pablo Caro" />
-<meta property="og:article:published_time" content="2014-01-08T11:23:00+01:00" />
-<meta name="twitter:title" content="Settings vars processor ">
-<meta name="twitter:description" content="Lo suelo usar durante el principio de los proyectos. from django.conf import settings as django_settings from django.core.exceptions import ImproperlyConfigured def settings(request): &#34;&#34;&#34; Adds the settings specified in settings.TEMPLATE_VISIBLE_SETTINGS to the request context. &#34;&#34;&#34; new_settings = {} for attr in django_settings.TEMPLATE_VISIBLE_SETTINGS: try: new_settings[attr] = getattr(django_settings, attr) except AttributeError ...">
+<meta property="og:article:published_time" content="2017-04-11T14:07:00+02:00" />
+<meta name="twitter:title" content="MobaXterm. Mucho más que un cliente ssh ">
+<meta name="twitter:description" content="">
 <meta property="og:image" content="/theme/images/apple-touch-icon-152x152.png" />
 <meta name="twitter:image" content="/theme/images/apple-touch-icon-152x152.png" >
 
-        <title>Settings vars processor  · Anotaciones por Pablo Caro
+        <title>MobaXterm. Mucho más que un cliente ssh  · Anotaciones por Pablo Caro
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -85,7 +84,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://pablocaro.es/settings-vars-processor"> Settings vars&nbsp;processor  </a></h1>
+    <h1><a href="http://pablocaro.es/mobaxterm-mucho-más-que-un-cliente-ssh"> MobaXterm. Mucho más que un cliente&nbsp;ssh  </a></h1>
     </header>
 </div>
 
@@ -93,50 +92,21 @@
         <div class="span8 offset2 article-content">
 
             
-            <p>Lo suelo usar durante el principio de los&nbsp;proyectos.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span> <span class="k">as</span> <span class="n">django_settings</span>
-<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ImproperlyConfigured</span>
-
-
-<span class="k">def</span> <span class="nf">settings</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Adds the settings specified in settings.TEMPLATE_VISIBLE_SETTINGS to</span>
-<span class="sd">    the request context.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">new_settings</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">django_settings</span><span class="o">.</span><span class="n">TEMPLATE_VISIBLE_SETTINGS</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">new_settings</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">django_settings</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="n">m</span> <span class="o">=</span> <span class="s">&quot;TEMPLATE_VISIBLE_SETTINGS: &#39;{0}&#39; does not exist&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="n">ImproperlyConfigured</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">new_settings</span>
-</pre></div>
-<p>Se usa&nbsp;así:</p>
-<div class="highlight"><pre><span class="n">TEMPLATE_CONTEXT_PROCESSORS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s">&#39;django.contrib.auth.context_processors.auth&#39;</span><span class="p">,</span>
-    <span class="o">...</span>
-    <span class="s">&#39;web.context_processors.settings&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="n">CLIENT_SLOGAN</span> <span class="o">=</span> <span class="s">&#39;Esto es un ejemplo&#39;</span>
-<span class="n">TEMPLATE_VISIBLE_SETTINGS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s">&#39;DEBUG&#39;</span><span class="p">,</span>
-    <span class="s">&#39;CLIENT_SLOGAN&#39;</span>
-<span class="p">)</span>
-</pre></div>
+            <p>Como sabéis, no soy de Windows. Linuxero desde hace años, tras pasar por múltiples sabores de Debian, ahora lo mío es <a class="reference external" href="https://es.opensuse.org/Portal:Tumbleweed">OpenSuse Tumbleweed</a>. Pero también tengo un equipo de trabajo Windows 7 que uso ocasionalmente.
+Para eso viene muy bien <a class="reference external" href="http://mobaxterm.mobatek.net/">MobaXterm</a>.</p>
+<p><a class="reference external" href="http://mobaxterm.mobatek.net/">MobaXterm</a> es un conjunto de aplicaciones muy interesantes para trabajar como en Linux y conectarte a equipos remotos:
+terminal, cliente ssh, servidor X, rdp, vnc,&nbsp;etc.</p>
 
             <section>
     <p id="post-share-links">
     ¿Te gustó esta anotación? Compártela en:
-    <a href="http://twitter.com/home?status=Settings%20vars%C2%A0processor%20 http%3A//pablocaro.es/settings-vars-processor" target="_blank" title="Compartir en Twitter">Twitter</a>
+    <a href="http://twitter.com/home?status=MobaXterm.%20Mucho%20m%C3%A1s%20que%20un%20cliente%C2%A0ssh%20 http%3A//pablocaro.es/mobaxterm-mucho-m%C3%A1s-que-un-cliente-ssh" target="_blank" title="Compartir en Twitter">Twitter</a>
     ❄
-    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//pablocaro.es/settings-vars-processor&p[images][0]=&p[title]=Settings%20vars%C2%A0processor%20&p[summary]=%3Cp%3ELo%20suelo%20usar%20durante%20el%20principio%20de%20los%26nbsp%3Bproyectos.%3C/p%3E%0A%3Cdiv%20class%3D%22highlight%22%3E%3Cpre%3E%3Cspan%20class%3D%22kn%22%3Efrom%3C/span%3E%20%3Cspan%20class%3D%22nn%22%3Edjango.conf%3C/span%3E%20%3Cspan%20class%3D%22kn%22%3Eimport%3C/span%3E%20%3Cspan%20class%3D%22n%22%3Esettings%3C/span%3E%20%3Cspan%20class%3D%22k%22%3Eas%3C/span%3E%20%3Cspan%20class%3D%22n%22%3Edjango_settings%3C/span%3E%0A%3Cspan%20class%3D%22kn%22%3Efrom%3C/span%3E%20%3Cspan%20class%3D%22nn%22%3Edjango.core.exceptions%3C/span%3E%20%3Cspan%20class%3D%22kn%22%3Eimport%3C/span%3E%20%3Cspan%20class%3D%22n%22%3EImproperlyConfigured%3C/span%3E%0A%0A%0A%3Cspan%20class%3D%22k%22%3Edef%3C/span%3E%20%3Cspan%20class%3D%22nf%22%3Esettings%3C/span%3E%3Cspan%20class%3D%22p%22%3E%28%3C/span%3E%3Cspan%20class%3D%22n%22%3Erequest%3C/span%3E%3Cspan%20class%3D%22p%22%3E%29%3A%3C/span%3E%0A%20%20%20%20%3Cspan%20class%3D%22sd%22%3E%26quot%3B%26quot%3B%26quot%3B%3C/span%3E%0A%3Cspan%20class%3D%22sd%22%3E%20%20%20%20Adds%20the%20settings%20specified%20in%20settings.TEMPLATE_VISIBLE_SETTINGS%20to%3C/span%3E%0A%3Cspan%20class%3D%22sd%22%3E%20%20%20%20the%20request%20context.%3C/span%3E%0A%3Cspan%20class%3D%22sd%22%3E%20%20%20%20%26quot%3B%26quot%3B%26quot%3B%3C/span%3E%0A%20%20%20%20%3Cspan%20class%3D%22n%22%3Enew_settings%3C/span%3E%20%3Cspan%20class%3D%22o%22%3E%3D%3C/span%3E%20%3Cspan%20class%3D%22p%22%3E%7B%7D%3C/span%3E%0A%20%20%20%20%3Cspan%20class%3D%22k%22%3Efor%3C/span%3E%20%3Cspan%20class%3D%22n%22%3Eattr%3C/span%3E%20%3Cspan%20class%3D%22ow%22%3Ein%3C/span%3E%20%3Cspan%20class%3D%22n%22%3Edjango_settings%3C/span%3E%3Cspan%20class%3D%22o%22%3E.%3C/span%3E%3Cspan%20class%3D%22n%22%3ETEMPLATE_VISIBLE_SETTINGS%3C/span%3E%3Cspan%20class%3D%22p%22%3E%3A%3C/span%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22k%22%3Etry%3C/span%3E%3Cspan%20class%3D%22p%22%3E%3A%3C/span%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22n%22%3Enew_settings%3C/span%3E%3Cspan%20class%3D%22p%22%3E%5B%3C/span%3E%3Cspan%20class%3D%22n%22%3Eattr%3C/span%3E%3Cspan%20class%3D%22p%22%3E%5D%3C/span%3E%20%3Cspan%20class%3D%22o%22%3E%3D%3C/span%3E%20%3Cspan%20class%3D%22nb%22%3Egetattr%3C/span%3E%3Cspan%20class%3D%22p%22%3E%28%3C/span%3E%3Cspan%20class%3D%22n%22%3Edjango_settings%3C/span%3E%3Cspan%20class%3D%22p%22%3E%2C%3C/span%3E%20%3Cspan%20class%3D%22n%22%3Eattr%3C/span%3E%3Cspan%20class%3D%22p%22%3E%29%3C/span%3E%0A%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22k%22%3Eexcept%3C/span%3E%20%3Cspan%20class%3D%22ne%22%3EAttributeError%20...%3C/span%3E%3C/pre%3E%3C/div%3E" target="_blank" title="Compartir en Facebook">Facebook</a>
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A//pablocaro.es/mobaxterm-mucho-m%C3%A1s-que-un-cliente-ssh&p[images][0]=&p[title]=MobaXterm.%20Mucho%20m%C3%A1s%20que%20un%20cliente%C2%A0ssh%20&p[summary]=" target="_blank" title="Compartir en Facebook">Facebook</a>
     ❄
-    <a href="https://plus.google.com/share?url=http%3A//pablocaro.es/settings-vars-processor" target="_blank" title="Compartir en Google Plus">Google+</a>
+    <a href="https://plus.google.com/share?url=http%3A//pablocaro.es/mobaxterm-mucho-m%C3%A1s-que-un-cliente-ssh" target="_blank" title="Compartir en Google Plus">Google+</a>
     ❄
-    <a href="mailto:?subject=Settings%20vars%C2%A0processor%20&body=http%3A//pablocaro.es/settings-vars-processor" target="_blank" title="Compartir vía correo electrónico">Email</a>
+    <a href="mailto:?subject=MobaXterm.%20Mucho%20m%C3%A1s%20que%20un%20cliente%C2%A0ssh%20&body=http%3A//pablocaro.es/mobaxterm-mucho-m%C3%A1s-que-un-cliente-ssh" target="_blank" title="Compartir vía correo electrónico">Email</a>
     </p>
 </section>
 
@@ -146,7 +116,7 @@
     <div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://pablocaro.es/settings-vars-processor#disqus_thread">
+                href="http://pablocaro.es/mobaxterm-mucho-más-que-un-cliente-ssh#disqus_thread">
 Comentarios            </a>
         </div>
         <div id="disqus_thread" class="accordion-body collapse">
@@ -155,8 +125,8 @@ Comentarios            </a>
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'anotaciones';
-        var disqus_identifier = 'http://pablocaro.es/settings-vars-processor';
-    var disqus_url = 'http://pablocaro.es/settings-vars-processor';
+        var disqus_identifier = 'http://pablocaro.es/mobaxterm-mucho-más-que-un-cliente-ssh';
+    var disqus_url = 'http://pablocaro.es/mobaxterm-mucho-más-que-un-cliente-ssh';
 
     (function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -179,9 +149,9 @@ Comentarios            </a>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Publicado</h4>
-            <time pubdate="pubdate" datetime="2014-01-08T11:23:00+01:00">ene 8, 2014</time>
+            <time pubdate="pubdate" datetime="2017-04-11T14:07:00+02:00">abr 11, 2017</time>
             <h4>Categoría</h4>
-            <a class="category-link" href="http://pablocaro.es/categories.html#programacion-ref">Programación</a>
+            <a class="category-link" href="http://pablocaro.es/categories.html#progamacion-ref">Progamación</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
                 <li><a href="http://pablocaro.es/tags.html#django-ref">django
