@@ -3,7 +3,7 @@
 Para eso viene muy bien &lt;a class="reference external" href="http://mobaxterm.mobatek.net/"&gt;MobaXterm&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://mobaxterm.mobatek.net/"&gt;MobaXterm&lt;/a&gt; es un conjunto de aplicaciones muy interesantes para trabajar como en Linux y conectarte a equipos remotos:
 terminal, cliente ssh, servidor X, rdp, vnc,&amp;nbsp;etc.&lt;/p&gt;
-</summary><category term="django"></category><category term="python"></category></entry><entry><title>Correo no leído en pestaña principal de gmail</title><link href="http://pablocaro.es/gmail_correo_no_leido_solo_en_principal" rel="alternate"></link><updated>2016-07-28T18:00:00+02:00</updated><author><name>Pablo Caro</name></author><id>tag:pablocaro.es,2016-07-28:gmail_correo_no_leido_solo_en_principal</id><summary type="html">&lt;p&gt;Lo de siempre, otra nota&amp;nbsp;recordatoria.&lt;/p&gt;
+</summary><category term="linux"></category></entry><entry><title>Correo no leído en pestaña principal de gmail</title><link href="http://pablocaro.es/gmail_correo_no_leido_solo_en_principal" rel="alternate"></link><updated>2016-07-28T18:00:00+02:00</updated><author><name>Pablo Caro</name></author><id>tag:pablocaro.es,2016-07-28:gmail_correo_no_leido_solo_en_principal</id><summary type="html">&lt;p&gt;Lo de siempre, otra nota&amp;nbsp;recordatoria.&lt;/p&gt;
 &lt;p&gt;Si filtras el correo en gmail por no leído (&lt;code class="code"&gt;
 is:unread&lt;/code&gt;
 ), obtienes todo el correo no leído,
